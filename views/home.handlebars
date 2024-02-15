@@ -1,0 +1,17 @@
+<div class="space-y-4 max-w-4xl mx-auto mt-10">
+  {{#each posts}}
+    <article class="bg-white p-6 rounded-lg shadow">
+      <div class="mb-4">
+        <h2 class="text-xl font-bold">
+          <a href="/post/{{id}}" class="text-blue-500 hover:text-blue-700">{{title}}</a>
+        </h2>
+        <div class="text-sm text-gray-600">
+          Posted by: {{User.username}} on {{format_date createdAt}}
+        </div>
+      </div>
+      <div class="text-gray-800">
+        {{body}}
+      </div>
+    </article>
+  {{/each}}
+</div>
