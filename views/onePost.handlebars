@@ -1,0 +1,38 @@
+<div class="max-w-4xl mx-auto mt-10">
+  <article class="bg-white p-6 rounded-lg shadow">
+    <div class="mb-4 border-b pb-4">
+      <h2 class="text-2xl font-bold mb-2">
+        {{post.title}}
+      </h2>
+      <div class="text-sm text-gray-600">
+        Posted by: {{post.User.username}} on {{format_date post.createdAt}}
+      </div>
+    </div>
+    <div class="text-gray-800">
+      {{post.body}}
+    </div>
+  </article>
+  {{#if post.Comments}}
+    <section class="mt-6">
+      <h3 class="text-xl font-semibold mb-4">Comments:</h3>
+      <div class="space-y-4">
+        {{#each post.Comments}}
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <p class="mb-2">{{body}}</p>
+            <p class="text-sm text-gray-600">{{User.username}}, {{format_date createdAt}}</p>
+          </div>
+        {{/each}}
+      </div>
+    </section>
+  {{/if}}
+  <form id="new-comment-form" class="bg-white p-6 rounded-lg shadow mt-6">
+    <h3 class="text-xl font-semibold mb-4">Add a comment</h3>
+    <input type="hidden" name="postId" value="{{post.id}}" />
+    <label class="block text-sm font-semibold text-gray-700 mb-2" for="comment-body">Comment:</label>
+    <textarea name="comment-body" class="form-input w-full p-2 border rounded-md mb-4"></textarea>
+    <button type="submit" class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700">Submit Comment</button>
+  </form>
+</div>
+
+
+<script src="/js/comment.js"></script>
